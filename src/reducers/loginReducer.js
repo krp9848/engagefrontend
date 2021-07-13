@@ -1,0 +1,79 @@
+import tweetService from '../services/tweets'
+import loginService from '../services/login'
+import { setNotification } from './notificationReducer'
+
+// check if the user information is present in local storage
+export const checkLoggedUser = () => {
+  return async (dispatch) => {
+    const loggedUser = window.localStorage.getItem('loggedBlogAppUser')
+    if (loggedUser) {
+      const user = JSON.parse(loggedUser)
+      dispatch({ type: 'SET_USER', user })
+      tweetService.setToken(user.token)
+    }
+  }
+}
+
+// handle login
+
+export const login = (credentials) => {
+  return async (dispatch) => {
+    try {
+      const user = await loginService.login(credentials)
+      window.localStorage.setItem('loggedBlogAppUser', JSON.stringify(user))
+      tweetService.setToken(user.token)
+      dispatch({ type: 'SET_USER', user })
+      dispatch(
+        setNotification(
+          {
+            message: `${user.username} logged in`,
+            messageType: 'success',
+          },
+          5
+        )
+      )
+    } catch (exception) {
+      dispatch(
+        setNotification(
+          {
+            message: `wrong username or password`,
+            messageType: 'failure',
+          },
+          5
+        )
+      )
+    }
+  }
+}
+
+// handle logout
+export const logout = (user) => {
+  return async (dispatch) => {
+    dispatch(
+      setNotification(
+        {
+          message: `${user.username} logged out`,
+          messageType: 'success',
+        },
+        5
+      )
+    )
+    dispatch({ type: 'SET_USER', user: null })
+    window.localStorage.removeItem('loggedBlogAppUser')
+  }
+}
+
+const loginReducer = (state = null, action) => {
+  console.log('state now', state)
+  console.log('action', action)
+  switch (action.type) {
+    case 'SET_USER':
+      return action.user
+    case 'REMOVE_USER':
+      return null
+    default:
+      return state
+  }
+}
+
+export default loginReducer
