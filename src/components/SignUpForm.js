@@ -1,6 +1,12 @@
 import React, { useState } from 'react'
+import { useDispatch } from 'react-redux'
+import { useHistory } from 'react-router-dom'
+import { setNotification } from '../reducers/notificationReducer'
+import { createUser } from '../reducers/userReducer'
 
 const SignUpForm = () => {
+  const dispatch = useDispatch()
+  const history = useHistory()
   const [name, setName] = useState('')
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
@@ -9,14 +15,16 @@ const SignUpForm = () => {
   const handleLogin = (event) => {
     event.preventDefault()
     if (password !== confirmPassword) {
-      console.log(`Password do not match`)
+      dispatch(
+        setNotification(
+          { message: 'Password do not match', messageType: 'failure' },
+          5
+        )
+      )
       return
     }
-    console.log(`account created`)
-    setName('')
-    setUsername('')
-    setPassword('')
-    setConfirmPassword('')
+
+    dispatch(createUser({ username, password, name }))
   }
   return (
     <form onSubmit={handleLogin}>
