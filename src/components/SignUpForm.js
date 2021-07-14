@@ -1,12 +1,10 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { useHistory } from 'react-router-dom'
 import { setNotification } from '../reducers/notificationReducer'
 import { createUser } from '../reducers/userReducer'
 
 const SignUpForm = () => {
   const dispatch = useDispatch()
-  const history = useHistory()
   const [name, setName] = useState('')
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
