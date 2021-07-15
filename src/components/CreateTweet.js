@@ -23,7 +23,9 @@ const CreateTweet = () => {
           required
         />
       </div>
-      <button type="submit">Tweet</button>
+      <button id="tweet-button" type="submit">
+        Tweet
+      </button>
     </form>
   )
 }

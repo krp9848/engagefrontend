@@ -37,7 +37,8 @@ function App() {
             <div>
               <LoginForm />
               <p>
-                Don't have an account? Please <Link to="/signup">SignUp</Link>
+                Don&apos;t have an account? Please{' '}
+                <Link to="/signup">SignUp</Link>
               </p>
             </div>
           ) : (

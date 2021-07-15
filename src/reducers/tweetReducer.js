@@ -21,8 +21,8 @@ export const createTweet = (newTweet) => {
     dispatch(
       setNotification(
         {
-          message: `new tweet added`,
-          messageType: `success`,
+          message: 'new tweet added',
+          messageType: 'success',
         },
         5
       )
@@ -34,12 +34,12 @@ const tweetReducer = (state = [], action) => {
   console.log('state now', state)
   console.log('action', action)
   switch (action.type) {
-    case 'INIT_TWEETS':
-      return action.data
-    case 'CREATE_TWEET':
-      return state.concat(action.data)
-    default:
-      return state
+  case 'INIT_TWEETS':
+    return action.data
+  case 'CREATE_TWEET':
+    return state.concat(action.data)
+  default:
+    return state
   }
 }
 

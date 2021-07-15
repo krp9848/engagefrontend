@@ -12,7 +12,7 @@ export const createUser = (newUser) => {
         setNotification(
           {
             message: `${error.response.data.error}`,
-            messageType: `failure`,
+            messageType: 'failure',
           },
           5
         )
@@ -25,8 +25,8 @@ const userReducer = (state = [], action) => {
   console.log('state now', state)
   console.log('action', action)
   switch (action.type) {
-    default:
-      return state
+  default:
+    return state
   }
 }
 
