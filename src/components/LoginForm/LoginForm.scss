@@ -1,0 +1,91 @@
+.loginFormContainer {
+  width: 40rem;
+  margin: 2rem auto 0 auto;
+  padding: 0 1.6rem;
+
+  .loginHeader {
+    margin-bottom: 2rem;
+    h1 {
+      color: transparent;
+      text-transform: uppercase;
+      font-size: 3.5rem;
+      background-image: linear-gradient(
+        to right,
+        var(--color-primary-light),
+        var(--color-primary-dark)
+      );
+
+      background-clip: text;
+    }
+  }
+
+  .loginForm {
+    margin-bottom: 1.5rem;
+
+    .formGroup {
+      margin-bottom: 2rem;
+    }
+
+    input {
+      font-family: inherit;
+      font-size: 1.5rem;
+      color: inherit;
+      padding: 1.5rem 2rem;
+      width: 100%;
+      border: none;
+      border-radius: 2px;
+      background-color: rgba(#fff, 0.5);
+      border-bottom: 3px solid transparent;
+
+      &:focus {
+        outline: none;
+        box-shadow: 0 1rem 2rem rgba(#000, 0.1);
+        border-bottom: 3px solid var(--color-primary);
+      }
+
+      &:focus:invalid {
+        border-bottom: 3px solid var(--color-danger);
+      }
+
+      &::placeholder {
+        text-transform: capitalize;
+      }
+    }
+    input:placeholder-shown + label {
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-4.5rem);
+    }
+    label {
+      display: block;
+      font-size: 1.5rem;
+      margin-left: 2rem;
+      margin-top: 0.7rem;
+      text-transform: capitalize;
+      transition: all 0.3s ease-in;
+    }
+
+    button {
+      width: 100%;
+      border-radius: 1rem;
+      padding: 0.5rem;
+      background-color: var(--color-primary);
+      color: var(--color-grey-light-1);
+      transition: all 0.3s ease-in;
+
+      &:hover,
+      &:active {
+        background-color: darken(#28587b, 15);
+        color: var(--color-grey-light-1);
+      }
+    }
+  }
+
+  .signUpText {
+    p {
+      a {
+        color: var(--color-primary-light);
+      }
+    }
+  }
+}

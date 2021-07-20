@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { Link, Redirect, Route, Switch } from 'react-router-dom'
+import { Redirect, Route, Switch } from 'react-router-dom'
 import CreateTweet from './components/CreateTweet'
 import DisplayTweets from './components/DisplayTweets'
-import LoginForm from './components/LoginForm'
+import LoginForm from './components/LoginForm/LoginForm'
 import Notification from './components/Notification'
 import SignUpForm from './components/SignUpForm'
 import { checkLoggedUser, logout } from './reducers/loginReducer'
@@ -24,9 +24,6 @@ function App() {
 
   return (
     <div className="App">
-      <h1>
-        <i>Engage</i>
-      </h1>
       <Notification />
       <Switch>
         <Route path="/signup">
@@ -34,13 +31,7 @@ function App() {
         </Route>
         <Route path="/">
           {user === null ? (
-            <div>
-              <LoginForm />
-              <p>
-                Don&apos;t have an account? Please{' '}
-                <Link to="/signup">SignUp</Link>
-              </p>
-            </div>
+            <LoginForm />
           ) : (
             <>
               <p>

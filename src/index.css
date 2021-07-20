@@ -1,16 +1,34 @@
-body {
+/* Global reset */
+:root {
+  --color-primary: #28587b;
+  --color-primary-light: #326f9a;
+  --color-primary-dark: #326f9a;
+
+  --color-grey-light-1: #e6eaef;
+  --color-grey-light-2: #cdd5df;
+  --color-grey-dark-1: #1f2733;
+  --color-grey-dark-2: #080a0d;
+
+  --color-danger: #7e191b;
+}
+*,
+*::before,
+*::after {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
+  box-sizing: inherit;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+html {
+  box-sizing: border-box;
+  font-size: 62.5%;
 }
+
+body {
+  font-family: 'Montserrat', sans-serif;
+}
+
+/* Keep this code for current functionality to hold  */
 .info {
   border: 3px solid black;
   text-align: center;
