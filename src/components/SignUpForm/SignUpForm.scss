@@ -1,9 +1,9 @@
-.loginFormContainer {
+.signUpFormContainer {
   width: 40rem;
   margin: 2rem auto 0 auto;
-  padding: 0 1.6rem;
+  padding: 0 0.5rem;
 
-  .loginHeader {
+  .signUpHeader {
     margin-bottom: 2rem;
     h1 {
       color: transparent;
@@ -19,11 +19,11 @@
     }
   }
 
-  .loginForm {
+  .signUpForm {
     margin-bottom: 1.5rem;
 
     .formGroup {
-      margin-bottom: 2rem;
+      margin-bottom: 1rem;
     }
 
     input {
@@ -82,7 +82,7 @@
     }
   }
 
-  .signUpText {
+  .logInText {
     p {
       a {
         color: var(--color-primary-light);

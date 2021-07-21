@@ -5,7 +5,7 @@ import CreateTweet from './components/CreateTweet'
 import DisplayTweets from './components/DisplayTweets'
 import LoginForm from './components/LoginForm/LoginForm'
 import Notification from './components/Notification'
-import SignUpForm from './components/SignUpForm'
+import SignUpForm from './components/SignUpForm/SignUpForm'
 import { checkLoggedUser, logout } from './reducers/loginReducer'
 import { initTweets } from './reducers/tweetReducer'
 
