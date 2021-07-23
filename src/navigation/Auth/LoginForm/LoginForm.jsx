@@ -1,19 +1,27 @@
 import { React, useState } from 'react'
-import { useDispatch } from 'react-redux'
-import { Link } from 'react-router-dom'
-import { login } from '../../reducers/loginReducer'
+import { Link, useHistory, useLocation } from 'react-router-dom'
+import { useProvideAuth } from '../useProvideAuth'
 import './LoginForm.scss'
 
 const LoginForm = () => {
-  const dispatch = useDispatch()
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
+  const history = useHistory()
+  const location = useLocation()
+  const auth = useProvideAuth()
+
+  let { from } = location.state || { from: { pathname: '/' } }
 
   const handleLogin = (event) => {
     event.preventDefault()
     const credentials = { username, password }
 
-    dispatch(login(credentials))
+    auth
+      .signin(credentials)
+      .then(() => {
+        history.replace(from)
+      })
+      .catch((err) => console.log(err))
 
     setUsername('')
     setPassword('')

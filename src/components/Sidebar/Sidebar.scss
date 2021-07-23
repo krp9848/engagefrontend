@@ -1,0 +1,50 @@
+.sidebar {
+  min-height: 100vh;
+  max-width: 20rem;
+  width: 100%;
+  background-color: var(--color-primary);
+  .app-logo {
+    font-size: 3.6rem;
+    padding-left: 2rem;
+
+    a {
+      text-decoration: none;
+      color: var(--color-grey-light-1);
+      transition: all 0.2s ease-in;
+      cursor: pointer;
+
+      &:hover,
+      &:active {
+        color: darken(#e6eaef, 15);
+        cursor: pointer;
+      }
+    }
+  }
+  .sidebar-list {
+    padding: 4rem 2rem;
+    list-style: none;
+
+    .sidebar-list-item {
+      &:not(:last-child) {
+        margin-bottom: 1.5rem;
+      }
+      a {
+        color: var(--color-grey-light-1);
+        font-size: 2.4rem;
+        display: flex;
+        align-items: center;
+        transition: all 0.2s ease-in;
+
+        text-decoration: none;
+        svg {
+          margin-right: 1.5rem;
+        }
+
+        &:hover,
+        &:active {
+          color: darken(#e6eaef, 15);
+        }
+      }
+    }
+  }
+}
