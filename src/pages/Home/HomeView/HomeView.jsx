@@ -1,5 +1,5 @@
 import React from 'react'
-import CreateTweet from '../../../components/CreateTweet'
+import CreateTweet from '../../../components/CreateTweet/CreateTweet'
 import DisplayTweets from '../../../components/DisplayTweets/DisplayTweets'
 
 export const HomeView = () => {

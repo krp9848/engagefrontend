@@ -1,0 +1,54 @@
+.create-tweet-container {
+  display: flex;
+
+  .profile-img {
+    img {
+      width: 5rem;
+      height: 5rem;
+      border-radius: 50%;
+      box-shadow: 0 0.3rem 0.6rem rgba(0, 0, 0, 0.3);
+    }
+  }
+  .tweet-form-container {
+    flex-grow: 1;
+
+    form {
+      display: flex;
+      flex-direction: column;
+      .tweet-text {
+        textarea {
+          resize: none;
+          width: 100%;
+          border: none;
+          padding: 2rem 1rem;
+          border-bottom: 1px solid var(--color-primary);
+          box-shadow: 0 3px 6px rgba(#50cb93, 0.1);
+          transition: all 0.3s ease-in;
+
+          &:active,
+          &:focus {
+            outline: none;
+            border: none;
+            border-bottom: 1px solid #50cb93;
+          }
+        }
+      }
+
+      button {
+        background-color: var(--color-primary);
+        color: var(--color-grey-light-1);
+        width: 10rem;
+        padding: 1rem 2rem;
+        border-radius: 5%;
+        align-self: flex-end;
+        transition: all 0.3s ease-in;
+
+        &:hover,
+        &:active {
+          background-color: darken(#28587b, 10);
+          color: #fff;
+        }
+      }
+    }
+  }
+}
