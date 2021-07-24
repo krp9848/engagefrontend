@@ -25,7 +25,7 @@ const RouterConfig = () => {
           <Home />
         </PrivateRoute>
 
-        <PrivateRoute exact path={PROFILE}>
+        <PrivateRoute exact path={`${PROFILE}/:username`}>
           <Profile />
         </PrivateRoute>
 

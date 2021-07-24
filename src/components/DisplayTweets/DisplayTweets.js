@@ -1,10 +1,7 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
 import Tweet from '../Tweet/Tweet'
 
-const DisplayTweets = () => {
-  const tweets = useSelector((state) => state.tweets)
-
+const DisplayTweets = ({ tweets }) => {
   return (
     <div>
       <h2>All Tweets</h2>

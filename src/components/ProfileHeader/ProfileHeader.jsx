@@ -1,8 +1,13 @@
 import React from 'react'
+import { useSelector } from 'react-redux'
 
 import './ProfileHeader.scss'
 
-const ProfileHeader = () => {
+const ProfileHeader = ({ username }) => {
+  const users = useSelector((state) =>
+    state.users.filter((user) => user.username === username)
+  )
+
   return (
     <div className="profile-header-container">
       <div className="profile-image">
@@ -14,7 +19,7 @@ const ProfileHeader = () => {
 
       <div className="profile-info">
         <div className="profile-info-main">
-          <div className="profile-username">&#64;kabirajpant</div>
+          <div className="profile-username">&#64;{username}</div>
           <button>Edit Profile</button>
         </div>
         <div className="profile-info-stats">
@@ -29,8 +34,10 @@ const ProfileHeader = () => {
           </p>
         </div>
         <div className="profile-info-desc">
-          <div className="profile-name">Kabi Raj Pant</div>
-          <div className="profile-desc">Software Engineer</div>
+          <div className="profile-name">
+            {users.length > 0 && users[0].name}
+          </div>
+          <div className="profile-desc">Something about myself</div>
         </div>
       </div>
     </div>

@@ -4,9 +4,11 @@ import './Sidebar.scss'
 import { FaHome, FaSignOutAlt, FaUser } from 'react-icons/fa'
 import { HOME, LOGIN, PROFILE, ROOT } from '../../navigation/CONSTANT'
 import { useProvideAuth } from '../../navigation/Auth/useProvideAuth'
+import { useSelector } from 'react-redux'
 
 const Sidebar = () => {
   const auth = useProvideAuth()
+  const loggedInUser = useSelector((state) => state.loggedInUser)
   const handleSignOut = () => {
     auth.signout()
   }
@@ -23,7 +25,7 @@ const Sidebar = () => {
           </Link>
         </li>
         <li className="sidebar-list-item">
-          <Link to={PROFILE}>
+          <Link to={`${PROFILE}/${loggedInUser.username}`}>
             <FaUser />
             <span>Profile</span>
           </Link>
