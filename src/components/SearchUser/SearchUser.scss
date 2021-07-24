@@ -16,7 +16,8 @@
       outline: none;
     }
     &:active,
-    &:focus + .searchResults {
+    &:focus,
+    &:not(:placeholder-shown) + .searchResults {
       display: block;
     }
 

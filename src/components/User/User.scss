@@ -1,22 +1,38 @@
 .user {
-  display: flex;
-  margin-bottom: 1rem;
-  .user-image {
-    margin-right: 0.5rem;
-    img {
-      width: 3rem;
-      height: 3rem;
-      border-radius: 50%;
-    }
-  }
-
-  .user-details {
+  a {
+    color: inherit;
+    text-decoration: none;
     display: flex;
-    flex-direction: column;
-    font-size: 1.6rem;
+    margin-bottom: 1rem;
+    transition: all 0.3s ease-in;
+    .user-image {
+      margin-right: 0.5rem;
+      img {
+        width: 3rem;
+        height: 3rem;
+        border-radius: 50%;
+      }
+    }
 
-    .username {
-      color: rgba(#000, 0.7);
+    .user-details {
+      display: flex;
+      flex-direction: column;
+      font-size: 1.6rem;
+
+      .username {
+        color: rgba(#000, 0.7);
+      }
+    }
+
+    &:hover,
+    &:active {
+      color: var(--color-primary);
+
+      .user-details {
+        .username {
+          color: rgba(var(--color-primary), 0.7);
+        }
+      }
     }
   }
 }
