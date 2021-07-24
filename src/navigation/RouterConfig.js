@@ -4,7 +4,7 @@ import SignUpForm from '../components/SignUpForm/SignUpForm'
 import Home from '../pages/Home'
 import LoginForm from './Auth/LoginForm/LoginForm'
 import PrivateRoute from './Auth/PrivateRoute'
-import { ROOT, SIGNUP, LOGIN } from './CONSTANT'
+import { ROOT, SIGNUP, LOGIN, HOME } from './CONSTANT'
 import NotFound from './NotFound'
 
 const RouterConfig = () => {
@@ -17,6 +17,10 @@ const RouterConfig = () => {
 
         {/* Private routes */}
         <PrivateRoute exact path={ROOT}>
+          <Home />
+        </PrivateRoute>
+
+        <PrivateRoute exact path={HOME}>
           <Home />
         </PrivateRoute>
 

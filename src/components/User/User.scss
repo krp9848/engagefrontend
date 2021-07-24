@@ -1,0 +1,22 @@
+.user {
+  display: flex;
+  margin-bottom: 1rem;
+  .user-image {
+    margin-right: 0.5rem;
+    img {
+      width: 3rem;
+      height: 3rem;
+      border-radius: 50%;
+    }
+  }
+
+  .user-details {
+    display: flex;
+    flex-direction: column;
+    font-size: 1.6rem;
+
+    .username {
+      color: rgba(#000, 0.7);
+    }
+  }
+}
