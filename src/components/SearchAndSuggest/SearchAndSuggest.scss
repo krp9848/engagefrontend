@@ -1,6 +1,8 @@
 .search-and-suggest {
   flex-grow: 1;
   display: flex;
+  max-width: 30rem;
+  width: 100%;
   flex-direction: column;
   padding: 2rem;
 }
