@@ -1,5 +1,5 @@
+import { toast } from 'react-toastify'
 import tweetService from '../services/tweets'
-import { setNotification } from './notificationReducer'
 
 export const initTweets = () => {
   return async (dispatch) => {
@@ -17,16 +17,7 @@ export const createTweet = (newTweet) => {
       type: 'CREATE_TWEET',
       data,
     })
-
-    dispatch(
-      setNotification(
-        {
-          message: 'new tweet added',
-          messageType: 'success',
-        },
-        5
-      )
-    )
+    toast.success('New Tweet added'.toUpperCase())
   }
 }
 

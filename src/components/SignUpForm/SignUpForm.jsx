@@ -1,36 +1,43 @@
 import React, { useState } from 'react'
-import { useDispatch } from 'react-redux'
-import { Link } from 'react-router-dom'
-import { setNotification } from '../../reducers/notificationReducer'
+import { Link, useHistory } from 'react-router-dom'
+import { toast } from 'react-toastify'
+import { useProvideAuth } from '../../navigation/Auth/useProvideAuth'
 import { createUser } from '../../reducers/userReducer'
 import './SignUpForm.scss'
 const SignUpForm = () => {
-  const dispatch = useDispatch()
   const [name, setName] = useState('')
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
+  const history = useHistory()
+  const auth = useProvideAuth()
 
-  const handleLogin = (event) => {
+  const handleSignUp = (event) => {
     event.preventDefault()
     if (password !== confirmPassword) {
-      dispatch(
-        setNotification(
-          { message: 'Password do not match', messageType: 'failure' },
-          5
-        )
-      )
+      toast.error('password do not match'.toUpperCase())
       return
     }
 
-    dispatch(createUser({ username, password, name }))
+    createUser({ username, password, name })
+      .then((user) => {
+        console.log('user creation successful', user)
+        return auth.signin({ username, password })
+      })
+      .then((loggedInUser) => {
+        console.log('User finally logged in', loggedInUser)
+        history.push('/')
+      })
+      .catch((error) => {
+        console.log(error)
+      })
   }
   return (
     <div className="signUpFormContainer">
       <div className="signUpHeader">
         <h1>Sign up on Engage</h1>
       </div>
-      <form className="signUpForm" onSubmit={handleLogin}>
+      <form className="signUpForm" onSubmit={handleSignUp}>
         <div className="formGroup">
           <input
             id="signup-name"

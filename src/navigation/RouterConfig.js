@@ -1,5 +1,6 @@
 import React from 'react'
 import { Switch, Route } from 'react-router-dom'
+import Notification from '../components/Notification/Notification'
 import SignUpForm from '../components/SignUpForm/SignUpForm'
 import Home from '../pages/Home'
 import Profile from '../pages/Profile/'
@@ -11,6 +12,7 @@ import NotFound from './NotFound'
 const RouterConfig = () => {
   return (
     <>
+      <Notification />
       <Switch>
         {/* Public routes */}
         <Route exact path={LOGIN} component={LoginForm} />

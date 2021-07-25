@@ -1,6 +1,5 @@
+import { toast } from 'react-toastify'
 import userService from '../services/users'
-import { login } from './loginReducer'
-import { setNotification } from './notificationReducer'
 
 export const initUsers = () => {
   return async (dispatch) => {
@@ -11,22 +10,17 @@ export const initUsers = () => {
 }
 
 export const createUser = (newUser) => {
-  return async (dispatch) => {
-    try {
-      const user = await userService.create(newUser)
-      dispatch(login({ username: user.username, password: newUser.password }))
-    } catch (error) {
-      dispatch(
-        setNotification(
-          {
-            message: `${error.response.data.error}`,
-            messageType: 'failure',
-          },
-          5
-        )
-      )
-    }
-  }
+  return new Promise((resolve, reject) => {
+    userService
+      .create(newUser)
+      .then((newUser) => {
+        resolve(newUser)
+      })
+      .catch((error) => {
+        reject(error.response.data.error)
+        toast.error(error.response.data.error)
+      })
+  })
 }
 
 const userReducer = (state = [], action) => {

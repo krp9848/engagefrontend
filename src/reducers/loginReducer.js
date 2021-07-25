@@ -1,6 +1,5 @@
 import tweetService from '../services/tweets'
 import loginService from '../services/login'
-import { setNotification } from './notificationReducer'
 
 // check if the user information is present in local storage
 export const checkLoggedUser = () => {
@@ -23,41 +22,15 @@ export const login = (credentials) => {
       window.localStorage.setItem('loggedEngageAppUser', JSON.stringify(user))
       tweetService.setToken(user.token)
       dispatch({ type: 'SET_USER', user })
-      dispatch(
-        setNotification(
-          {
-            message: `${user.username} logged in`,
-            messageType: 'success',
-          },
-          5
-        )
-      )
     } catch (exception) {
-      dispatch(
-        setNotification(
-          {
-            message: 'wrong username or password',
-            messageType: 'failure',
-          },
-          5
-        )
-      )
+      console.log('exception', exception)
     }
   }
 }
 
 // handle logout
-export const logout = (user) => {
+export const logout = () => {
   return async (dispatch) => {
-    dispatch(
-      setNotification(
-        {
-          message: `${user.username} logged out`,
-          messageType: 'success',
-        },
-        5
-      )
-    )
     dispatch({ type: 'SET_USER', user: null })
     window.localStorage.removeItem('loggedEngageAppUser')
   }
