@@ -1,6 +1,7 @@
 import React, { useState, createContext, useContext } from 'react'
 import { useDispatch } from 'react-redux'
 import tweetService from '../../services/tweets'
+import userService from '../../services/users'
 
 const authContext = createContext()
 
@@ -12,6 +13,7 @@ export function ProvideAuth({ children }) {
       const user = JSON.parse(loggedUser)
       dispatch({ type: 'SET_USER', user })
       tweetService.setToken(user.token)
+      userService.setToken(user.token)
       return user
     }
     return null

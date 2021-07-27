@@ -1,9 +1,11 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import { followUser, unfollowUser } from '../../reducers/userReducer'
 
 import './ProfileHeader.scss'
 
 const ProfileHeader = ({ username }) => {
+  const dispatch = useDispatch()
   const currentUser = useSelector((state) => state.currentUser)
   const [currentProfileUser] = useSelector((state) =>
     state.users.filter((user) => user.username === username)
@@ -23,6 +25,16 @@ const ProfileHeader = ({ username }) => {
       )
   }
 
+  const handleFollowUnfollow = () => {
+    if (alreadyFollowing) {
+      console.log('Unfollowing now')
+      dispatch(unfollowUser(currentProfileUser.id))
+    } else {
+      console.log('following now')
+      dispatch(followUser(currentProfileUser.id))
+    }
+  }
+
   return (
     <div className="profile-header-container">
       <div className="profile-image">
@@ -40,7 +52,9 @@ const ProfileHeader = ({ username }) => {
           {ownProfile ? (
             <button>Edit Profile</button>
           ) : (
-            <button>{alreadyFollowing ? 'Unfollow' : 'Follow'}</button>
+            <button onClick={handleFollowUnfollow}>
+              {alreadyFollowing ? 'Unfollow' : 'Follow'}
+            </button>
           )}
         </div>
         <div className="profile-info-stats">

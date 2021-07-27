@@ -3,6 +3,7 @@ import loginService from '../../services/login'
 import tweetService from '../../services/tweets'
 import { useAuth } from './ProvideAuth'
 import { toast } from 'react-toastify'
+import userService from '../../services/users'
 
 export function useProvideAuth() {
   const { setAuth } = useAuth()
@@ -18,6 +19,7 @@ export function useProvideAuth() {
             JSON.stringify(auth)
           )
           tweetService.setToken(auth.token)
+          userService.setToken(auth.token)
           dispatch({ type: 'SET_USER', user: auth })
           toast.success(`${auth.username} logged in`.toUpperCase())
           setAuth(auth)
