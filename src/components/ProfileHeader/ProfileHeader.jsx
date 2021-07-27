@@ -21,7 +21,7 @@ const ProfileHeader = ({ username }) => {
     alreadyFollowing =
       currentProfileUser &&
       currentProfileUser.followers.find(
-        (follower) => follower.toString() === currentUser.id.toString()
+        (follower) => follower === currentUser.id
       )
   }
 

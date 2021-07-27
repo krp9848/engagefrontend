@@ -5,13 +5,30 @@ import './FollowSuggest.scss'
 
 const FollowSuggest = () => {
   // only suggest users which are not currently being followed by the current user
-  const users = useSelector((state) =>
-    state.users.filter((user, idx) => idx < 5)
-  )
+  // or loggedInUser
+  const users = useSelector((state) => state.users)
+  const currentUser = useSelector((state) => state.currentUser)
+  console.log('currentUser', currentUser)
+  const currentlyFollowedUsers =
+    currentUser.following && currentUser.following.map((user) => user.id)
+
+  let count = 0
+  const fiveNotFollowedUsers = []
+  for (let user of users) {
+    if (
+      !currentlyFollowedUsers.includes(user.id) &&
+      user.id !== currentUser.id
+    ) {
+      fiveNotFollowedUsers.push(user)
+      count += 1
+    }
+    if (count >= 5) break
+  }
+
   return (
     <div className="follow-suggest-container">
       <h3 className="follow-suggest-header">Follow Suggestions</h3>
-      {users.map((user) => (
+      {fiveNotFollowedUsers.map((user) => (
         <User key={user.id} user={user} />
       ))}
     </div>
