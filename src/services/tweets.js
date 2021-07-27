@@ -31,5 +31,35 @@ const tweetDelete = async (id) => {
   return response.data
 }
 
-const tweetService = { getAll, setToken, create, tweetDelete }
+// like tweet
+
+const tweetLike = async (id) => {
+  const config = {
+    headers: { Authorization: token },
+  }
+
+  const response = await axios.post(`${baseUrl}/${id}/like`, {}, config)
+
+  return response.data
+}
+
+// tweet retweet
+const tweetRetweet = async (id) => {
+  const config = {
+    headers: { Authorization: token },
+  }
+
+  const response = await axios.post(`${baseUrl}/${id}/retweet`, {}, config)
+
+  return response.data
+}
+
+const tweetService = {
+  getAll,
+  setToken,
+  create,
+  tweetDelete,
+  tweetLike,
+  tweetRetweet,
+}
 export default tweetService

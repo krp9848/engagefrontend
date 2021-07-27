@@ -21,6 +21,28 @@ export const createTweet = (newTweet) => {
   }
 }
 
+export const likeTweet = (tweetId) => {
+  return async (dispatch) => {
+    const updatedTweet = await tweetService.tweetLike(tweetId)
+
+    dispatch({
+      type: 'UPDATE_TWEET',
+      updatedTweet,
+    })
+  }
+}
+
+export const retweetTweet = (tweetId) => {
+  return async (dispatch) => {
+    const updatedTweet = await tweetService.tweetRetweet(tweetId)
+
+    dispatch({
+      type: 'UPDATE_TWEET',
+      updatedTweet,
+    })
+  }
+}
+
 const tweetReducer = (state = [], action) => {
   console.log('state now', state)
   console.log('action', action)
@@ -29,6 +51,12 @@ const tweetReducer = (state = [], action) => {
     return action.data
   case 'CREATE_TWEET':
     return state.concat(action.data)
+  case 'UPDATE_TWEET':
+    return state.map((tweet) =>
+      tweet.id.toString() !== action.updatedTweet.id.toString()
+        ? tweet
+        : action.updatedTweet
+    )
   default:
     return state
   }

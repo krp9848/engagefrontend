@@ -1,8 +1,18 @@
 import React from 'react'
 import './Tweet.scss'
 import { FaHeart, FaComment, FaRetweet } from 'react-icons/fa'
+import { useDispatch } from 'react-redux'
+import { likeTweet, retweetTweet } from '../../reducers/tweetReducer'
 
 const Tweet = ({ tweet }) => {
+  const dispatch = useDispatch()
+  const handleRetweet = () => {
+    dispatch(retweetTweet(tweet.id))
+  }
+
+  const handleLike = () => {
+    dispatch(likeTweet(tweet.id))
+  }
   return (
     <div className="tweet-container">
       <div className="tweet-user">
@@ -23,11 +33,11 @@ const Tweet = ({ tweet }) => {
             <FaComment />
             <span>1</span>
           </div>
-          <div className="retweet">
+          <div className="retweet" onClick={handleRetweet}>
             <FaRetweet />
-            <span>{tweet.likes.length}</span>
+            <span>{tweet.retweets.length}</span>
           </div>
-          <div className="likes">
+          <div className="likes" onClick={handleLike}>
             <FaHeart />
             <span>{tweet.likes.length}</span>
           </div>
