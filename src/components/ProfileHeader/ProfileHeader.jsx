@@ -4,9 +4,24 @@ import { useSelector } from 'react-redux'
 import './ProfileHeader.scss'
 
 const ProfileHeader = ({ username }) => {
-  const users = useSelector((state) =>
+  const currentUser = useSelector((state) => state.currentUser)
+  const [currentProfileUser] = useSelector((state) =>
     state.users.filter((user) => user.username === username)
   )
+
+  console.log('currentUser', currentUser)
+  console.log('currentProfileUser', currentProfileUser)
+  const ownProfile =
+    (currentUser && currentUser.username) ===
+    (currentProfileUser && currentProfileUser.username)
+  let alreadyFollowing = false
+  if (!ownProfile) {
+    alreadyFollowing =
+      currentProfileUser &&
+      currentProfileUser.followers.find(
+        (follower) => follower.toString() === currentUser.id.toString()
+      )
+  }
 
   return (
     <div className="profile-header-container">
@@ -19,25 +34,36 @@ const ProfileHeader = ({ username }) => {
 
       <div className="profile-info">
         <div className="profile-info-main">
-          <div className="profile-username">&#64;{username}</div>
-          <button>Edit Profile</button>
+          <div className="profile-username">
+            &#64;{currentProfileUser && currentProfileUser.username}{' '}
+          </div>
+          {ownProfile ? (
+            <button>Edit Profile</button>
+          ) : (
+            <button>{alreadyFollowing ? 'Unfollow' : 'Follow'}</button>
+          )}
         </div>
         <div className="profile-info-stats">
           <p className="count-post">
-            3 <span>posts</span>
+            {currentProfileUser && currentProfileUser.tweets.length}{' '}
+            <span>posts</span>
           </p>
           <p className="count-followers">
-            111 <span>followers</span>
+            {currentProfileUser && currentProfileUser.followers.length}{' '}
+            <span>followers</span>
           </p>
           <p className="count-post">
-            93 <span>following</span>
+            {currentProfileUser && currentProfileUser.following.length}{' '}
+            <span>following</span>
           </p>
         </div>
         <div className="profile-info-desc">
           <div className="profile-name">
-            {users.length > 0 && users[0].name}
+            {currentProfileUser && currentProfileUser.name}
           </div>
-          <div className="profile-desc">Something about myself</div>
+          <div className="profile-desc">
+            {currentProfileUser && currentProfileUser.description}
+          </div>
         </div>
       </div>
     </div>

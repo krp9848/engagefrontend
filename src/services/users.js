@@ -6,8 +6,13 @@ const getAll = async () => {
   return response.data
 }
 
+const getSingleUser = async (id) => {
+  const response = await axios.get(`${baseUrl}/${id}`)
+  return response.data
+}
+
 const getUserTweets = async (id) => {
-  const response = await axios.get(`baseUrl/${id}`)
+  const response = await axios.get(`${baseUrl}/${id}`)
   return response.data
 }
 
@@ -16,5 +21,5 @@ const create = async (newObject) => {
   return response.data
 }
 
-const userService = { getAll, create, getUserTweets }
+const userService = { getAll, create, getUserTweets, getSingleUser }
 export default userService

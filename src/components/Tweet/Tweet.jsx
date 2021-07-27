@@ -25,11 +25,11 @@ const Tweet = ({ tweet }) => {
           </div>
           <div className="retweet">
             <FaRetweet />
-            <span>112</span>
+            <span>{tweet.likes.length}</span>
           </div>
           <div className="likes">
             <FaHeart />
-            <span>14</span>
+            <span>{tweet.likes.length}</span>
           </div>
         </div>
       </div>
