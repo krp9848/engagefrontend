@@ -10,7 +10,8 @@ const FollowSuggest = () => {
   const currentUser = useSelector((state) => state.currentUser)
   console.log('currentUser', currentUser)
   const currentlyFollowedUsers =
-    currentUser.following && currentUser.following.map((user) => user.id)
+    (currentUser.following && currentUser.following.map((user) => user.id)) ||
+    []
 
   let count = 0
   const fiveNotFollowedUsers = []
