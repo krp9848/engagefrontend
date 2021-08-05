@@ -21,9 +21,6 @@ Backend Code -> [https://github.com/krp9848/Engage](https://github.com/krp9848/E
 
 <b>Frontend</b>: Reactjs
 <br>
-<b>Additional NPM Libraries</b> - react-toastify - react-router-dom  
- - axios
-<br>
 <b>Styling</b>: SASS
 <br>
 <b>Backend</b>: Express/NodeJS
