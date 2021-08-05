@@ -19,26 +19,23 @@ Backend Code -> [https://github.com/krp9848/Engage](https://github.com/krp9848/E
 
 # Tech Stack
 
-<b>Frontned</b>: Reactjs
+<b>Frontend</b>: Reactjs
 <br>
-<b>Additional NPM Libraries</b>
-
-- react-toastify
-- react-router-dom
-- axios
-  <br>
-  <b>Styling</b>: SASS
-  <br>
-  <b>Backend</b>: Express/NodeJS
-  <br>
-  <b>E2E Test</b>: Cypress
-  <br>
-  <b>Front end Test</b>: Jest
-  <br>
-  <b>Database and Api Integration test</b>: Jest with supertest
-  <br>
-  <b>Database</b>: MongoDB
-  <br>
-  <b>Authentication and Authorisation</b>: JWT token
-  <br>
-  <b>Deployment</b>: CI/CD setup using GitHub Actions via heroku
+<b>Additional NPM Libraries</b> - react-toastify - react-router-dom  
+ - axios
+<br>
+<b>Styling</b>: SASS
+<br>
+<b>Backend</b>: Express/NodeJS
+<br>
+<b>E2E Test</b>: Cypress
+<br>
+<b>Frontend Test</b>: Jest
+<br>
+<b>Database and Api Integration test</b>: Jest with supertest
+<br>
+<b>Database</b>: MongoDB
+<br>
+<b>Authentication and Authorisation</b>: JWT token
+<br>
+<b>Deployment</b>: CI/CD setup using GitHub Actions via heroku
